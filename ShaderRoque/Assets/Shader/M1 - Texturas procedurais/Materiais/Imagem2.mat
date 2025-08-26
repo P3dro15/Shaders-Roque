@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: ImagemE
-  m_Shader: {fileID: 4800000, guid: d5b40710955184f49bb5b64b5128313f, type: 3}
+  m_Name: Imagem2
+  m_Shader: {fileID: 4800000, guid: b55b962706f882a4ea898bebe59fb1fc, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -29,10 +29,11 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _A: 5
-    - _B: 0
-    - _Radius: 7
+    - _GridSize: 8
+    - _Speed: 2
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _ColorA: {r: 0.9169811, g: 0.14360262, b: 0.14360262, a: 1}
+    - _ColorB: {r: 0, g: 1, b: 0, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1

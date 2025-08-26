@@ -2,12 +2,11 @@ Shader "Custom/ImagemC"
 {
     Properties
     {
-        _Color ("Color", Color) = (1,1,1,1)
         _MainTex ("Albedo (RGB)", 2D) = "white" {}
-        _A ("A", Range(0,10)) = 5
-        _B ("B", Range(0,10)) = 5
-        _C ("C", Range(0,10)) = 5
-        _D ("D", Range(0,10)) = 5   
+        _ColorBL ("Bottom Left (Ciano)", Color) = (0, 1, 1, 1)
+        _ColorBR ("Bottom Right (Branco)", Color) = (1, 1, 1, 1)
+        _ColorTL ("Top Left (Magenta)", Color) = (1, 0, 1, 1)
+        _ColorTR ("Top Right (Branco)", Color) = (1, 1, 1, 1)
     }
     SubShader
     {
@@ -21,20 +20,23 @@ Shader "Custom/ImagemC"
             float2 uv_MainTex;
         };
 
-        fixed4 _Color;
-        float _A, _B, _C, _D;
+        float4 _ColorBL, _ColorBR, _ColorTL, _ColorTR;
 
         void surf (Input IN, inout SurfaceOutputStandard o)
         {
-            float2 uv = IN.uv_MainTex;
-            float c = _A * uv.x + _B;
-            c = (c * c) * -1 + _C;
-            o.Albedo = half3(c,0,0) + _Color;
+            float u = IN.uv_MainTex.x;
+            float v = IN.uv_MainTex.y;
 
-            // float uv = IN.uv_MainTex.x;
-            // float f = _A * uv + _B;
-            // float g = _C * (f) + _D;
-            // o.Albedo = g + _Color;
+            // Mistura a cor do canto inferior esquerdo com a do inferior direito usando a coordenada U.
+            float4 bottomColor = lerp(_ColorBL, _ColorBR, u);
+
+            // Mistura a cor do canto superior esquerdo com a do superior direito usando a coordenada U.
+            float4 topColor = lerp(_ColorTL, _ColorTR, u);
+
+            // Mistura a cor da borda inferior com a da borda superior usando a coordenada V.
+            float4 finalColor = lerp(bottomColor, topColor, v);
+
+            o.Albedo = finalColor.rgb;
         }
         ENDCG
     }

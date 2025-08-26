@@ -24,6 +24,7 @@ Shader "Custom/ImagemK"
         void surf (Input IN, inout SurfaceOutputStandard o)
         {
             float2 uv = IN.uv_MainTex;
+            //Cria um padrão de faixas verticais alternadas, usando uma onda senoidal arredondada.
             float k = round(saturate(sin(_A * uv.x)));
             o.Albedo = k + _Color; 
         }

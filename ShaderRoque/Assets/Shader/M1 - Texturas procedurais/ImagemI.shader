@@ -27,20 +27,7 @@ Shader "Custom/ImagemI"
 
         void surf (Input IN, inout SurfaceOutputStandard o)
         {
-            // float center = float(0.5);
-
-            // Calcula a distância do pixel atual (IN.uv_MainTex) até o centro
-            // float dist_from_center = distance(IN.uv_MainTex, center);
-
-            // if (dist_from_center < _Radius)
-            // {
-            //     o.Albedo = _Color.rgb;
-            // }
-            // else
-            // {
-            //     o.Albedo = float3(1,1,1);
-            // }
-
+            // Desenha um quadrado na tela de tamanho (_A, _B) e posição (_C, _D)
             if((IN.uv_MainTex.x > _A && IN.uv_MainTex.y < _B) && (IN.uv_MainTex.x < _C && IN.uv_MainTex.y > _D))
             {
                 o.Albedo = _Color.rgb;

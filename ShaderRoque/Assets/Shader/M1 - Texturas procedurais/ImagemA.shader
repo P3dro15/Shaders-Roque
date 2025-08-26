@@ -6,8 +6,6 @@ Shader "Custom/ImagemA"
         _MainTex ("Albedo (RGB)", 2D) = "white" {}
         _A ("A", Range(-10,20)) = 5
         _B ("B", Range(-10,20)) = 0
-        //_C ("C", Range(-10,20)) = 0.5
-       //_D ("D", Range(-10,20)) = 0.5
     }
     SubShader
     {
@@ -28,8 +26,8 @@ Shader "Custom/ImagemA"
         {
             float2 uv = IN.uv_MainTex;
 
-            //o.Albedo = sin(_A * uv.x + _B) * _C + _D; //expressão linear 
-            o.Albedo = _A * uv.x + _B; //expressão linear
+            //A expressão linear é usanda para criar um gradiente
+            o.Albedo = _A * uv.x + _B;
         }
         ENDCG
     }

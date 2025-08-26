@@ -28,6 +28,7 @@ Shader "Custom/ImagemJ"
             // Calcula a distância do pixel atual (IN.uv_MainTex) até o centro
             float dist_from_center = distance(IN.uv_MainTex, center);
 
+            // Se a distância for menor que o raio, pinta com a cor, senão pinta de branco
             if (dist_from_center < _Radius)
             {
                 o.Albedo = _Color.rgb;

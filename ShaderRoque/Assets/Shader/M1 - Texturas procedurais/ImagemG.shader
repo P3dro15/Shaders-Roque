@@ -25,6 +25,7 @@ Shader "Custom/ImagemG"
         {
             float2 uv = IN.uv_MainTex;
 
+            // Pinta listras verticais
             o.Albedo = 1 - round(_A * uv.x * _Color);
         }
         ENDCG
