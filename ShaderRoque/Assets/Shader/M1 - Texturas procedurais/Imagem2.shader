@@ -3,6 +3,7 @@ Shader "Custom/Imagem2"
     Properties
     {
         _Color ("Color", Color) = (1,1,1,1)
+        _Color1 ("Color 1", Color) = (1,1,1,1)
         _MainTex ("Albedo (RGB)", 2D) = "white" {}
         _ColorA ("Color A", Color) = (0,0,0,1) // Preto por padrão
         _ColorB ("Color B", Color) = (0,1,0,1) // Verde por padrão
@@ -21,7 +22,7 @@ Shader "Custom/Imagem2"
             float2 uv_MainTex;
         };
 
-        fixed4 _ColorA, _ColorB;
+        fixed4 _Color, _Color1, _ColorA, _ColorB;
         float _GridSize, _Speed;
 
         void surf (Input IN, inout SurfaceOutputStandard o)
@@ -41,9 +42,8 @@ Shader "Custom/Imagem2"
             //lterna entre 0 e 1, mudando o padrão xadrez a cada segundo.
             float final_mask = fmod(checker_mask + time_switch, 2.0);
 
-            // Usa lerp para escolher entre a Cor A e a Cor B baseado na máscara final
-            fixed3 finalColor = lerp(_ColorA.rgb, _ColorB.rgb, final_mask);
-
+            // Usa lerp para que varia as cores baseado na máscara final
+            fixed3 finalColor = (final_mask) ? lerp(_ColorA, _ColorB, time_switch) : lerp(_Color, _Color1, time_switch);
             o.Albedo = finalColor;
         }
         ENDCG

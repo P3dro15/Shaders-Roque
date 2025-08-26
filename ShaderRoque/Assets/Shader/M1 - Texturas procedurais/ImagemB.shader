@@ -4,10 +4,6 @@ Shader "Custom/ImagemB"
     {
         _Color ("Color", Color) = (1,1,1,1)
         _MainTex ("Albedo (RGB)", 2D) = "white" {}
-        _A ("A", Range(-10,10)) = 5
-        _B ("B", Range(-10,10)) = 0
-        _C ("C", Range(-10,10)) = 1
-        _D ("D", Range(-10,10)) = 1
     }
     SubShader
     {
@@ -22,7 +18,6 @@ Shader "Custom/ImagemB"
         };
 
         fixed4 _Color;
-        float _A, _B, _C, _D;
 
         void surf (Input IN, inout SurfaceOutputStandard o)
         {

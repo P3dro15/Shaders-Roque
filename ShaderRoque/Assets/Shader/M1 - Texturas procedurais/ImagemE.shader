@@ -29,7 +29,7 @@ Shader "Custom/ImagemE"
             float2 sphere = IN.uv_MainTex - float2(0, 0.95);
             //Calcula a distância do pixel até o centro da esfera.
             float dist = distance(sphere, float2(0, 0));
-            //Define a intensidade do brilho: quanto mais longe do centro, menor a intensidade.
+            //Define a intensidade do brilho quanto mais longe do centro, menor a intensidade.
             float intensity = 1 - (dist * _Radius);
             //Garante que a intensidade fique entre 0 e 1.
             intensity = saturate(intensity);
