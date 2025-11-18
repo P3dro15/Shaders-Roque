@@ -3,8 +3,8 @@ Shader "Unlit/Aula"
     Properties
     {
         _MainTex ("Texture", 2D) = "white" {}
-        _A("Slider 1", Range(0, 360)) = 1
-        _B("Slider 2", Range(0, 360)) = 1
+        _A("Slider 1", Range(0, 10)) = 1
+        _B("Slider 2", Range(0, 10)) = 1
         [HDR] _Color("Color", Color) = (1,1,1,1)
     }
     SubShader
